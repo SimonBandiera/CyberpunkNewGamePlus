@@ -41,6 +41,11 @@ end
 -- On macosx the cp2077-repo packages below resolve to jackmaxwil's macOS SDK and to the patched
 -- RedLib / ArchiveXL / TweakXL headers (see the repo's macosx branches).
 add_requires("red4ext-sdk", "red-lib", "archive-xl", "tweak-xl", "sharedpunk")
+if is_plat("windows") then
+    -- Game 2.5: the 2.5 callback/stack layouts and StatType values, and SharedPunk's 2.5 offsets.
+    add_requireconfs("red4ext-sdk", { version = "2026.10.24" })
+    add_requireconfs("sharedpunk", { version = "2026.10.25" })
+end
 
 local cp2077_path = os.getenv("CP2077_PATH")
 
